@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repair Hub Home</title>
+    <link rel="preload" as="image" href="https://img.freepik.com/free-vector/gradient-technology-background_23-2148884155.jpg">
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: antiquewhite;
+            color: black;
+            line-height: 1.6;
+            font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+        }
+
+        header {
+            background-color: rgb(87, 13, 13);
+            color: black;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 0;
+            z-index: 1000;
+        }
+
+        .container01 {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 40px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            color: bisque;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background-color: rgb(87, 13, 13);
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                padding: 1rem;
+                border-radius: 10px;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+        }
+
+        .nav-links {
+            gap: 2rem;
+            display: flex;
+            list-style: none;
+            color: bisque;
+        }
+
+        .logo {
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 2rem;
+            color: bisque;
+        }
+
+        .nav-links a {
+            color: bisque;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .hero-section {
+            margin-top: 70px;
+            text-align: center;
+            padding: 120px 0 80px;
+            background:
+                linear-gradient(rgba(95, 13, 13, 0.85), rgba(95, 13, 13, 0.85)),
+                url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            color: bisque;
+            height: 400px;
+        }
+
+        .hero-section h1 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroTextFadeUp 1s ease-out 0.2s forwards;
+        }
+
+        .hero-section p {
+            font-weight: 1.8rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroTextFadeUp 1s ease-out 0.6s forwards;
+        }
+
+        .start-button {
+            color: black;
+            background-color: bisque;
+            font-weight: bold;
+            padding: 15px 30px;
+            display: inline-block;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+            border-radius: 50px;
+        }
+
+        .start-button:hover {
+            transform: translateY(-3px);
+        }
+
+        .main-container {
+            padding: 80px 0;
+            margin-top: 50px;
+        }
+
+        .cont {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .section p {
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .feature {
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: rgb(87, 13, 13);
+            color: bisque;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, opacity 0.6s ease;
+            opacity: 0;
+            transform: translateX(80px);
+        }
+
+        .feature-card.slide-in {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes heroTextFadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feature-card h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2.5rem 2.5rem 2.5rem 2.5rem;
+            background-color: rgb(87, 13, 13);
+            border-radius: 18px;
+            color: bisque;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+            ;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .submit-btn {
+            background: linear-gradient(90deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            padding: 24px 80px;
+            border: none;
+            border-radius: 18px;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.15);
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(90deg, #128C7E 0%, #25D366 100%);
+            transform: translateY(-2px) scale(1.04);
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            justify-content: flex-start;
+            margin-top: 1rem;
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(90deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.15);
+            border: none;
+            display: inline-block;
+            text-align: center;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .whatsapp-btn:hover {
+            background: linear-gradient(90deg, #128C7E 0%, #25D366 100%);
+            transform: translateY(-2px) scale(1.04);
+        }
+
+        footer {
+            background: rgb(87, 13, 13);
+            color: bisque;
+            text-align: center;
+            padding: 2rem 0 1rem 0;
+            margin-top: 40px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+            margin: 1rem 0 0 0;
+            padding: 0;
+        }
+
+        .footer-links a {
+            color: bisque;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .container01 {
+                padding: 0 10px;
+                height: auto;
+            }
+
+            .hero-section {
+                padding: 60px 0 40px;
+                height: 250px;
+                font-size: 0.95rem;
+            }
+
+            .hero-section h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-section p {
+                font-size: 1rem;
+            }
+
+            .start-button {
+                padding: 10px 18px;
+                font-size: 1rem;
+            }
+
+            .main-container {
+                padding: 30px 0;
+                margin-top: 20px;
+            }
+
+            .cont {
+                padding: 0 10px;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .section p {
+                font-size: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .feature {
+                gap: 1rem;
+                margin-top: 1.5rem;
+                display: block;
+            }
+
+            .feature-card {
+                padding: 12px;
+                font-size: 0.95rem;
+            }
+
+            .feature-icon {
+                font-size: 2rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .feature-card h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .form {
+                padding: 1rem;
+            }
+
+            .contact-form {
+                padding: 1.2rem 1rem;
+                border-radius: 12px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 8px;
+                font-size: 0.95rem;
+            }
+
+            .submit-btn {
+                padding: 12px 30px;
+                font-size: 1.1rem;
+                border-radius: 14px;
+            }
+
+            .contact-buttons {
+                gap: 0.5rem;
+            }
+
+            .whatsapp-btn {
+                padding: 7px 18px;
+                font-size: 1rem;
+                border-radius: 14px;
+            }
+
+            footer {
+                padding: 1rem 0 0.5rem 0;
+            }
+
+            .footer-container {
+                padding: 0 10px;
+            }
+
+            .footer-links {
+                gap: 1rem;
+                font-size: 0.95rem;
+            }
+
+            .footer-links a {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="container01">
+            <!-- Hamburger icon -->
+            <div class="hamburger" onclick="toggleMenu()">
+                &#9776;
+            </div>
+
+            <a href="#home" class="logo">Repair Hub</a>
+            <ul id="navMenu" class="nav-links">
+                <li> <a href="#home">Home</a></li>
+                <li> <a href="#about">About</a></li>
+                <li> <a href="#service">Service</a></li>
+                <li> <a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="home" class="hero-section">
+        <div class="container01">
+            <h1>welcome to Our Website</h1>
+            <p>Discover our services and plans. We're here to help you.</p>
+           <a href="#services" class="start-button">Get Started</a> 
+    </section>
+    <div class="main-container">
+        <div class="cont">
+            <section id="about" class="section">
+                <h2>More About Us</h2>
+                <p>We create beautiful, functional websites that help businesses grow and succeed in the digital world
+                </p>
+            </section>
+            <section id="services" class="section">
+                <h2>Our services</h2>
+                <div class="feature">
+                    <div class="feature-card">
+                        <div class="feature-icon">🖥️</div>
+                        <h3>make web with us</h3>
+                        <p>Expert in web designing and Development</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💻</div>
+                        <h3>Laptop Featururing</h3>
+                        <p>Laptop accessories</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>Mobile Repairing</h3>
+                        <p>Expert repair services for your devices and systems.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛠️</div>
+                        <h3>Repairing</h3>
+                        <p>Expert repair services for your devices and systems.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <section class="section" id="contact">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or need assistance, feel free to reach out to us!</p>
+        <form id="contact-form" class="contact-form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your Name " required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter Email here" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" placeholder="Add Discription" required></textarea>
+            </div>
+            <div class="contact-buttons">
+                <button type="submit" class="submit-btn">Send Message</button>
+                <a href="https://wa.me/923004376996" target="_blank" class="whatsapp-btn"><span
+                        style="vertical-align:middle;">&#x1F4F2;</span></a>
+            </div>
+        </form>
+    </section>
+    <footer>
+        <div class="footer-container">
+            <a href="#home" class="logo">Repair Hub</a>
+            <ul class="footer-links">
+                <li><a href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a></li>
+                <li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
+                <li><a href="https://www.google.com/" target="_blank" rel="noopener">Google</a></li>
+                <li><a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></li>
+            </ul>
+            <p style="margin-top:1rem; color:bisque;">&copy; 2025 Repair Hub. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('navMenu');
+            nav.classList.toggle('active');
+        }
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            const cards = document.querySelectorAll('.feature-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('slide-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            cards.forEach(card => observer.observe(card));
+        });
+    </script>
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        alert('Welcome to Repair Hub! Explore our services and get in touch with us.');
+        // Contact form handling
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            alert(`Thank you, ${name}! Your message has been sent.`);
+            this.reset();
+        });
+    </script>
+</body>
+
+</html>
